@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: deployment-1
+    labels:
+       app: myapp-eks
+
+spec:
+  selector:
+    matchLabels:
+      app: myapp-eks
+  template:
+     metadata:
+       name: pod01
+       labels:
+         app: myapp-eks
+     spec:
+       containers:
+        - name: container
+          image: nginx
+          ports:
+           - containerPort: 80
+  replicas: 3
