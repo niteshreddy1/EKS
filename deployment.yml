@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    app: myimg
+
+spec:
+  selector:
+    matchLabels:
+      app: myimg
+
+  replicas: 3
+  template: 
+    metadata:
+      name: pod
+      labels:
+        app: myimg
+    spec:
+      containers:
+        - name: mycont1
+          image: public.ecr.aws/f0s4k0d6/doc:latest
+          ports:
+           - containerPort: 80
+
